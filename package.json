@@ -1,14 +1,31 @@
 {
-  "name": "wui",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@willes/wui",
+  "version": "0.1.1",
+  "description": "@willes/wui vue组件库",
+  "main": "dist/index.umd.js",
+  "private": false,
+  "keywords": [
+    "wui",
+    "vue",
+    "组件库"
+  ],
+  "author": "willes",
+  "files": [
+    "dist",
+    "packages"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "npm run build:js && npm run build:css",
+    "lint": "vue-cli-service lint",
+    "build:js": "webpack --config ./webpack.config.js",
+    "build:css": "npx gulp sass",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.6",
     "vue": "^2.6.11",
     "vuex": "^3.4.0"
   },
@@ -17,7 +34,9 @@
     "@vue/cli-plugin-eslint": "~4.5.11",
     "@vue/cli-plugin-vuex": "~4.5.11",
     "@vue/cli-service": "~4.5.11",
+    "@vue/compiler-sfc": "^3.2.31",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@willes/wui": "^0.1.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
@@ -25,10 +44,16 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "gulp": "^4.0.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^5.1.0",
     "lint-staged": "^9.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.9.7",
+    "webpack-cli": "^4.9.2"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
